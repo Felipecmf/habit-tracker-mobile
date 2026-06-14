@@ -1,27 +1,30 @@
-# Habit Tracker Mobile
+# Kaiser Path
 
-Aplicativo de hábitos feito em HTML, CSS e JavaScript, focado em uso no celular.
+Habit tracker mobile em HTML, CSS e JavaScript.
 
-## Como usar no celular
+## Novidades desta versão
 
-### Opção simples
-1. Envie a pasta do projeto para o celular.
-2. Abra o arquivo `index.html` no navegador.
-3. Use normalmente.
+- Nome alterado para **Kaiser Path**
+- Estética azul/roxa inspirada em rosa azul
+- Logo própria em SVG de rosa azul
+- Aba **Hoje**
+- Aba **Histórico**
+- Histórico do mês atual
+- Navegação para meses anteriores
+- Resumo mensal por hábito
+- Streak atual, melhor streak e total de conclusões
+- Backup por JSON
+- LocalStorage para manter os dados no mesmo celular/navegador
+- PWA para adicionar à tela inicial
 
-Os dados serão salvos no próprio navegador do celular usando LocalStorage.
+## Como usar
 
-### Melhor opção: instalar como app
-Para o botão "Adicionar à tela inicial" funcionar melhor, hospede a pasta em algum lugar, como:
-- GitHub Pages
-- Netlify
-- Vercel
+Abra `index.html` no navegador ou hospede no GitHub Pages.
 
-Depois acesse o link pelo navegador do celular e escolha:
+Para instalar no celular:
 - Android/Chrome: menu ⋮ > Adicionar à tela inicial
 - iPhone/Safari: compartilhar > Adicionar à Tela de Início
 
 ## Importante
-Os dados ficam apenas no dispositivo/navegador usado. Se limpar dados do navegador ou trocar de celular, os dados podem ser perdidos.
 
-Use o botão de exportar backup para salvar um arquivo JSON periodicamente.
+Os dados ficam salvos apenas no navegador/dispositivo usado. Se você limpar os dados do navegador, pode perder o histórico. Use o backup JSON.

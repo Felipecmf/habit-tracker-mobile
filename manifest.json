@@ -1,14 +1,14 @@
 {
-  "name": "Habit Tracker Mobile",
-  "short_name": "Habits",
+  "name": "Kaiser Path",
+  "short_name": "Kaiser Path",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#101828",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "kaiser-logo.png",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

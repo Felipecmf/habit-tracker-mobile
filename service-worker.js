@@ -1,11 +1,11 @@
-const CACHE_NAME = "habit-tracker-mobile-v1";
+const CACHE_NAME = "kaiser-path-v1";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
-  "./icon.svg"
+  "./kaiser-logo.png"
 ];
 
 self.addEventListener("install", event => {

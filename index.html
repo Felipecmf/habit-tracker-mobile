@@ -3,88 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#101828" />
-  <title>Habit Tracker Mobile</title>
+  <meta name="theme-color" content="#07111f" />
+  <title>Kaiser Path</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="app">
-    <header class="hero">
-      <div>
-        <p class="eyebrow">Habit Tracker</p>
-        <h1>Hoje</h1>
-        <p id="todayText" class="muted"></p>
+  <main class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <img src="kaiser-logo.png" alt="Logo Kaiser Path" class="brand-logo" />
+        <div>
+          <p class="eyebrow">Blue Rose Routine</p>
+          <h1>Kaiser Path</h1>
+        </div>
       </div>
       <button id="exportBtn" class="icon-btn" title="Exportar backup">⇩</button>
     </header>
 
-    <section class="summary-grid">
-      <article class="summary-card">
-        <span class="summary-label">Hábitos</span>
-        <strong id="totalHabits">0</strong>
-      </article>
-      <article class="summary-card">
-        <span class="summary-label">Feitos hoje</span>
-        <strong id="doneToday">0</strong>
-      </article>
-      <article class="summary-card">
-        <span class="summary-label">Progresso</span>
-        <strong id="progressToday">0%</strong>
-      </article>
+    <nav class="tabs" aria-label="Navegação principal">
+      <button class="tab active" data-tab="today">Hoje</button>
+      <button class="tab" data-tab="history">Histórico</button>
+      <button class="tab" data-tab="settings">Backup</button>
+    </nav>
+
+    <section id="todayTab" class="tab-page active">
+      <section class="hero-card">
+        <div>
+          <p class="muted" id="todayText"></p>
+          <h2>Domine sua rotina.</h2>
+          <p class="muted">Marque seus hábitos concluídos e mantenha sua streak viva.</p>
+        </div>
+        <div class="rose-mark">
+          <img src="kaiser-logo.png" alt="" />
+        </div>
+      </section>
+
+      <section class="summary-grid">
+        <article class="summary-card">
+          <span>Hábitos</span>
+          <strong id="totalHabits">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Feitos hoje</span>
+          <strong id="doneToday">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Progresso</span>
+          <strong id="progressToday">0%</strong>
+        </article>
+      </section>
+
+      <section class="progress-wrap">
+        <div class="progress-bar">
+          <div id="progressFill"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Hábitos de hoje</h2>
+            <p class="muted mini">Toque no check para registrar o dia atual.</p>
+          </div>
+          <button id="openHabitModal" class="primary-btn">+ Novo</button>
+        </div>
+
+        <div id="habitList" class="habit-list"></div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">
+            <img src="kaiser-logo.png" alt="" />
+          </div>
+          <h3>Nenhum caminho iniciado</h3>
+          <p>Adicione seu primeiro hábito para começar a construir sua evolução.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Últimos 7 dias</h2>
+        <div id="weekGrid" class="week-grid"></div>
+      </section>
     </section>
 
-    <section class="progress-wrap">
-      <div class="progress-bar">
-        <div id="progressFill"></div>
-      </div>
+    <section id="historyTab" class="tab-page">
+      <section class="panel">
+        <div class="panel-head history-head">
+          <div>
+            <h2>Histórico mensal</h2>
+            <p class="muted mini">Veja o que foi feito no mês atual e navegue pelos meses anteriores.</p>
+          </div>
+          <div class="month-controls">
+            <button id="prevMonth" class="icon-btn" title="Mês anterior">‹</button>
+            <button id="nextMonth" class="icon-btn" title="Mês posterior">›</button>
+          </div>
+        </div>
+
+        <div class="month-title-wrap">
+          <strong id="monthTitle">Mês atual</strong>
+          <span id="monthSummary" class="pill">0%</span>
+        </div>
+
+        <div class="calendar-weekdays">
+          <span>D</span>
+          <span>S</span>
+          <span>T</span>
+          <span>Q</span>
+          <span>Q</span>
+          <span>S</span>
+          <span>S</span>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Detalhes do mês</h2>
+        <div id="monthlyHabitDetails" class="monthly-details"></div>
+      </section>
     </section>
 
-    <section class="panel">
-      <div class="panel-head">
-        <h2>Meus hábitos</h2>
-        <button id="openHabitModal" class="primary-btn">+ Novo</button>
-      </div>
-      <div id="habitList" class="habit-list"></div>
-      <div id="emptyState" class="empty-state">
-        <div class="empty-icon">✓</div>
-        <h3>Nenhum hábito ainda</h3>
-        <p>Adicione seu primeiro hábito para começar a acompanhar sua rotina.</p>
-      </div>
-    </section>
+    <section id="settingsTab" class="tab-page">
+      <section class="panel">
+        <h2>Backup local</h2>
+        <p class="muted">
+          Os dados ficam salvos apenas neste navegador/dispositivo. Exporte um backup para não perder seu progresso.
+        </p>
 
-    <section class="panel">
-      <h2>Últimos 7 dias</h2>
-      <div id="weekGrid" class="week-grid"></div>
-    </section>
+        <div class="backup-actions">
+          <button id="exportBtnSettings" class="primary-btn wide">Exportar backup JSON</button>
 
-    <section class="panel small">
-      <h2>Backup local</h2>
-      <p class="muted">
-        Os dados ficam salvos apenas neste navegador/dispositivo. Para não perder, exporte um backup periodicamente.
-      </p>
-      <label class="import-label">
-        Importar backup JSON
-        <input id="importFile" type="file" accept="application/json" />
-      </label>
+          <label class="import-label">
+            Importar backup JSON
+            <input id="importFile" type="file" accept="application/json" />
+          </label>
+        </div>
+      </section>
+
+      <section class="panel danger-zone">
+        <h2>Zona de cuidado</h2>
+        <p class="muted">Use apenas se quiser recomeçar do zero neste dispositivo.</p>
+        <button id="resetBtn" class="danger-btn wide">Apagar todos os dados</button>
+      </section>
     </section>
   </main>
 
   <dialog id="habitModal">
     <form id="habitForm" method="dialog" class="modal-card">
       <div class="modal-head">
-        <h2>Novo hábito</h2>
+        <div>
+          <p class="eyebrow">Novo caminho</p>
+          <h2>Novo hábito</h2>
+        </div>
         <button type="button" id="closeHabitModal" class="icon-btn">×</button>
       </div>
 
       <label>
         Nome do hábito
-        <input id="habitName" type="text" placeholder="Ex: Beber água" required maxlength="40" />
+        <input id="habitName" type="text" placeholder="Ex: Estudar 1 hora" required maxlength="42" />
       </label>
 
       <label>
         Meta rápida
-        <input id="habitGoal" type="text" placeholder="Ex: 2 litros, 30 min, 10 páginas" maxlength="40" />
+        <input id="habitGoal" type="text" placeholder="Ex: 30 min, 2 litros, 10 páginas" maxlength="42" />
       </label>
 
       <label>
@@ -95,13 +176,14 @@
           <option>Produtividade</option>
           <option>Bem-estar</option>
           <option>Finanças</option>
+          <option>Treino</option>
           <option>Outro</option>
         </select>
       </label>
 
       <label>
-        Cor
-        <input id="habitColor" type="color" value="#7c3aed" />
+        Cor do hábito
+        <input id="habitColor" type="color" value="#2f80ed" />
       </label>
 
       <button class="primary-btn wide" type="submit">Adicionar hábito</button>
@@ -110,6 +192,7 @@
 
   <template id="habitTemplate">
     <article class="habit-card">
+      <div class="habit-shine"></div>
       <div class="habit-top">
         <button class="check-btn" aria-label="Marcar como feito">✓</button>
         <div class="habit-info">
@@ -118,6 +201,7 @@
         </div>
         <button class="delete-btn" aria-label="Excluir hábito">🗑</button>
       </div>
+
       <div class="stats">
         <span><strong class="streak">0</strong> streak</span>
         <span><strong class="best">0</strong> melhor</span>
