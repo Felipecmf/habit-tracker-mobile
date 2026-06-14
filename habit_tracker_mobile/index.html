@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#101828" />
+  <title>Habit Tracker Mobile</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Habit Tracker</p>
+        <h1>Hoje</h1>
+        <p id="todayText" class="muted"></p>
+      </div>
+      <button id="exportBtn" class="icon-btn" title="Exportar backup">⇩</button>
+    </header>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <span class="summary-label">Hábitos</span>
+        <strong id="totalHabits">0</strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label">Feitos hoje</span>
+        <strong id="doneToday">0</strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label">Progresso</span>
+        <strong id="progressToday">0%</strong>
+      </article>
+    </section>
+
+    <section class="progress-wrap">
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Meus hábitos</h2>
+        <button id="openHabitModal" class="primary-btn">+ Novo</button>
+      </div>
+      <div id="habitList" class="habit-list"></div>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">✓</div>
+        <h3>Nenhum hábito ainda</h3>
+        <p>Adicione seu primeiro hábito para começar a acompanhar sua rotina.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Últimos 7 dias</h2>
+      <div id="weekGrid" class="week-grid"></div>
+    </section>
+
+    <section class="panel small">
+      <h2>Backup local</h2>
+      <p class="muted">
+        Os dados ficam salvos apenas neste navegador/dispositivo. Para não perder, exporte um backup periodicamente.
+      </p>
+      <label class="import-label">
+        Importar backup JSON
+        <input id="importFile" type="file" accept="application/json" />
+      </label>
+    </section>
+  </main>
+
+  <dialog id="habitModal">
+    <form id="habitForm" method="dialog" class="modal-card">
+      <div class="modal-head">
+        <h2>Novo hábito</h2>
+        <button type="button" id="closeHabitModal" class="icon-btn">×</button>
+      </div>
+
+      <label>
+        Nome do hábito
+        <input id="habitName" type="text" placeholder="Ex: Beber água" required maxlength="40" />
+      </label>
+
+      <label>
+        Meta rápida
+        <input id="habitGoal" type="text" placeholder="Ex: 2 litros, 30 min, 10 páginas" maxlength="40" />
+      </label>
+
+      <label>
+        Categoria
+        <select id="habitCategory">
+          <option>Saúde</option>
+          <option>Estudos</option>
+          <option>Produtividade</option>
+          <option>Bem-estar</option>
+          <option>Finanças</option>
+          <option>Outro</option>
+        </select>
+      </label>
+
+      <label>
+        Cor
+        <input id="habitColor" type="color" value="#7c3aed" />
+      </label>
+
+      <button class="primary-btn wide" type="submit">Adicionar hábito</button>
+    </form>
+  </dialog>
+
+  <template id="habitTemplate">
+    <article class="habit-card">
+      <div class="habit-top">
+        <button class="check-btn" aria-label="Marcar como feito">✓</button>
+        <div class="habit-info">
+          <h3></h3>
+          <p></p>
+        </div>
+        <button class="delete-btn" aria-label="Excluir hábito">🗑</button>
+      </div>
+      <div class="stats">
+        <span><strong class="streak">0</strong> streak</span>
+        <span><strong class="best">0</strong> melhor</span>
+        <span><strong class="total">0</strong> total</span>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
