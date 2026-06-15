@@ -8,9 +8,9 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "kaiser-logo.png",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "kaiser-logo-clean.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]

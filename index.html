@@ -12,7 +12,7 @@
   <main class="app-shell">
     <header class="app-header">
       <div class="brand">
-        <img src="kaiser-logo.png" alt="Logo Kaiser Path" class="brand-logo" />
+        <img src="kaiser-logo-clean.png" alt="Logo Kaiser Path" class="brand-logo" />
         <div>
           <p class="eyebrow">Blue Rose Routine</p>
           <h1>Kaiser Path</h1>
@@ -24,6 +24,7 @@
     <nav class="tabs" aria-label="Navegação principal">
       <button class="tab active" data-tab="today">Hoje</button>
       <button class="tab" data-tab="history">Histórico</button>
+      <button class="tab" data-tab="finance">Finanças</button>
       <button class="tab" data-tab="settings">Backup</button>
     </nav>
 
@@ -35,7 +36,7 @@
           <p class="muted">Marque seus hábitos concluídos e mantenha sua streak viva.</p>
         </div>
         <div class="rose-mark">
-          <img src="kaiser-logo.png" alt="" />
+          <img src="kaiser-logo-clean.png" alt="" />
         </div>
       </section>
 
@@ -73,7 +74,7 @@
 
         <div id="emptyState" class="empty-state">
           <div class="empty-icon">
-            <img src="kaiser-logo.png" alt="" />
+            <img src="kaiser-logo-clean.png" alt="" />
           </div>
           <h3>Nenhum caminho iniciado</h3>
           <p>Adicione seu primeiro hábito para começar a construir sua evolução.</p>
@@ -91,7 +92,7 @@
         <div class="panel-head history-head">
           <div>
             <h2>Histórico mensal</h2>
-            <p class="muted mini">Veja o que foi feito no mês atual e navegue pelos meses anteriores.</p>
+            <p class="muted mini">Veja o que foi feito no mês atual e navegue pelos meses anteriores ou posteriores.</p>
           </div>
           <div class="month-controls">
             <button id="prevMonth" class="icon-btn" title="Mês anterior">‹</button>
@@ -105,13 +106,7 @@
         </div>
 
         <div class="calendar-weekdays">
-          <span>D</span>
-          <span>S</span>
-          <span>T</span>
-          <span>Q</span>
-          <span>Q</span>
-          <span>S</span>
-          <span>S</span>
+          <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
         </div>
 
         <div id="calendarGrid" class="calendar-grid"></div>
@@ -123,11 +118,79 @@
       </section>
     </section>
 
+    <section id="financeTab" class="tab-page">
+      <section class="hero-card finance-hero">
+        <div>
+          <p class="eyebrow">Controle financeiro</p>
+          <h2>Gastos mensais</h2>
+          <p class="muted">Baseado na planilha: lançamentos, categorias, totais e saldo do mês.</p>
+        </div>
+        <button id="openFinanceModal" class="primary-btn">+ Lançamento</button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head history-head">
+          <div>
+            <h2>Resumo financeiro</h2>
+            <p class="muted mini">Lançamentos do mês selecionado.</p>
+          </div>
+          <div class="month-controls">
+            <button id="prevFinanceMonth" class="icon-btn" title="Mês anterior">‹</button>
+            <button id="nextFinanceMonth" class="icon-btn" title="Mês posterior">›</button>
+          </div>
+        </div>
+
+        <div class="month-title-wrap">
+          <strong id="financeMonthTitle">Mês atual</strong>
+          <span id="financeBalancePill" class="pill">R$ 0,00</span>
+        </div>
+
+        <section class="finance-grid">
+          <article class="finance-card income">
+            <span>Receitas</span>
+            <strong id="financeIncome">R$ 0,00</strong>
+          </article>
+          <article class="finance-card expense">
+            <span>Gastos</span>
+            <strong id="financeExpenses">R$ 0,00</strong>
+          </article>
+          <article class="finance-card">
+            <span>Fixas</span>
+            <strong id="financeFixed">R$ 0,00</strong>
+          </article>
+          <article class="finance-card">
+            <span>Variáveis</span>
+            <strong id="financeVariable">R$ 0,00</strong>
+          </article>
+        </section>
+      </section>
+
+      <section class="panel">
+        <h2>Gastos por categoria</h2>
+        <div id="categoryChart" class="category-chart"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Lançamentos</h2>
+            <p class="muted mini">Adicione receitas e despesas. Nenhum dado da planilha foi inserido automaticamente.</p>
+          </div>
+        </div>
+        <div id="financeList" class="finance-list"></div>
+        <div id="financeEmpty" class="empty-state finance-empty">
+          <div class="empty-icon"><img src="kaiser-logo-clean.png" alt="" /></div>
+          <h3>Sem lançamentos neste mês</h3>
+          <p>Adicione um gasto, receita ou despesa fixa para começar.</p>
+        </div>
+      </section>
+    </section>
+
     <section id="settingsTab" class="tab-page">
       <section class="panel">
         <h2>Backup local</h2>
         <p class="muted">
-          Os dados ficam salvos apenas neste navegador/dispositivo. Exporte um backup para não perder seu progresso.
+          Os dados ficam salvos apenas neste navegador/dispositivo. Exporte um backup para não perder hábitos, histórico e finanças.
         </p>
 
         <div class="backup-actions">
@@ -158,35 +221,73 @@
         <button type="button" id="closeHabitModal" class="icon-btn">×</button>
       </div>
 
-      <label>
-        Nome do hábito
+      <label>Nome do hábito
         <input id="habitName" type="text" placeholder="Ex: Estudar 1 hora" required maxlength="42" />
       </label>
 
-      <label>
-        Meta rápida
+      <label>Meta rápida
         <input id="habitGoal" type="text" placeholder="Ex: 30 min, 2 litros, 10 páginas" maxlength="42" />
       </label>
 
-      <label>
-        Categoria
+      <label>Categoria
         <select id="habitCategory">
-          <option>Saúde</option>
-          <option>Estudos</option>
-          <option>Produtividade</option>
-          <option>Bem-estar</option>
-          <option>Finanças</option>
-          <option>Treino</option>
-          <option>Outro</option>
+          <option>Saúde</option><option>Estudos</option><option>Produtividade</option><option>Bem-estar</option><option>Finanças</option><option>Treino</option><option>Outro</option>
         </select>
       </label>
 
-      <label>
-        Cor do hábito
+      <label>Cor do hábito
         <input id="habitColor" type="color" value="#2f80ed" />
       </label>
 
       <button class="primary-btn wide" type="submit">Adicionar hábito</button>
+    </form>
+  </dialog>
+
+  <dialog id="financeModal">
+    <form id="financeForm" method="dialog" class="modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Novo lançamento</p>
+          <h2>Finanças</h2>
+        </div>
+        <button type="button" id="closeFinanceModal" class="icon-btn">×</button>
+      </div>
+
+      <label>Data
+        <input id="financeDate" type="date" required />
+      </label>
+
+      <label>Tipo
+        <select id="financeType" required>
+          <option>Despesa Fixa</option>
+          <option>Despesa Variável</option>
+          <option>Receita</option>
+        </select>
+      </label>
+
+      <label>Categoria
+        <select id="financeCategory" required></select>
+      </label>
+
+      <label>Descrição / Onde foi gasto
+        <input id="financeDescription" type="text" placeholder="Ex: Mercado, faculdade, salário" maxlength="70" required />
+      </label>
+
+      <label>Valor
+        <input id="financeValue" type="number" min="0" step="0.01" placeholder="0,00" required />
+      </label>
+
+      <label>Forma de pagamento
+        <select id="financePayment">
+          <option>Pix</option><option>Cartão</option><option>Débito</option><option>Dinheiro</option><option>Boleto</option><option>Conta</option><option>Outro</option>
+        </select>
+      </label>
+
+      <label>Observação
+        <input id="financeNote" type="text" placeholder="Opcional" maxlength="90" />
+      </label>
+
+      <button class="primary-btn wide" type="submit">Salvar lançamento</button>
     </form>
   </dialog>
 

@@ -1,30 +1,20 @@
 # Kaiser Path
 
-Habit tracker mobile em HTML, CSS e JavaScript.
+Habit tracker mobile em HTML, CSS e JavaScript com controle financeiro integrado.
 
-## Novidades desta versão
+## Recursos
 
-- Nome alterado para **Kaiser Path**
-- Estética azul/roxa inspirada em rosa azul
-- Logo própria em SVG de rosa azul
-- Aba **Hoje**
-- Aba **Histórico**
-- Histórico do mês atual
-- Navegação para meses anteriores
-- Resumo mensal por hábito
+- Visual azul/roxo com logo enviada pelo usuário, com borda preta removida
+- Aba **Hoje** para marcar hábitos
 - Streak atual, melhor streak e total de conclusões
-- Backup por JSON
-- LocalStorage para manter os dados no mesmo celular/navegador
-- PWA para adicionar à tela inicial
-
-## Como usar
-
-Abra `index.html` no navegador ou hospede no GitHub Pages.
-
-Para instalar no celular:
-- Android/Chrome: menu ⋮ > Adicionar à tela inicial
-- iPhone/Safari: compartilhar > Adicionar à Tela de Início
+- Aba **Histórico** com calendário mensal de hábitos
+- Aba **Finanças** baseada na planilha de controle de gastos mensais
+- Cadastro de lançamentos com Data, Tipo, Categoria, Descrição, Valor, Forma de pagamento e Observação
+- Resumo mensal: receitas, gastos, despesas fixas, variáveis e saldo
+- Gráfico visual por categoria
+- Backup JSON
+- Dados salvos no LocalStorage do dispositivo/navegador
 
 ## Importante
 
-Os dados ficam salvos apenas no navegador/dispositivo usado. Se você limpar os dados do navegador, pode perder o histórico. Use o backup JSON.
+Nenhum dado da planilha foi inserido no app. Apenas a estrutura e as categorias foram usadas como base.
